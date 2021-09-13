@@ -44,7 +44,11 @@ folderPath = os.path.join(os.getcwd(), dirName)
 
 
 # 得到 m3u8 網址
-htmlfile = cloudscraper.create_scraper(browser='firefox', delay=10).get(url)
+htmlfile = cloudscraper.create_scraper(browser={
+    'browser': 'firefox',
+    'platform': 'windows',
+                'mobile': False
+}, delay=10).get(url)
 result = re.search("https://.+m3u8", htmlfile.text)
 m3u8url = result[0]
 
